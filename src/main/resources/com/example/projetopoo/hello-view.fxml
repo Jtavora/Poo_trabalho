@@ -31,12 +31,16 @@
     </HBox>
 
     <VBox spacing="10.0">
-        <Label text="Buscar por ID"/>
+        <Label text="Buscar ou Deletar por ID"/>
         <TextField fx:id="searchIdField"/>
     </VBox>
 
     <HBox spacing="10.0" alignment="CENTER">
         <Button text="Buscar Processo" onAction="#onHelloButtonClick"/>
+    </HBox>
+
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Deletar processo" onAction="#onDeleteButtonClick"/>
     </HBox>
 
     <TextArea fx:id="welcomeText" text="Bem-vindo ao Projeto POO!" wrapText="true">

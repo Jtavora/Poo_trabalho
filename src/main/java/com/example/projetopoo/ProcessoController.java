@@ -134,4 +134,28 @@ public class ProcessoController {
             welcomeText.setText("Erro ao buscar no banco de dados.");
         }
     }
+
+    @FXML
+    protected void onDeleteButtonClick() {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/poo", "postgres", "30092003")) {
+            int deleteId = Integer.parseInt(searchIdField.getText());
+
+            String sql = "DELETE FROM processo WHERE id_processo = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, deleteId);
+
+                int rowsDeleted = preparedStatement.executeUpdate();
+
+                if (rowsDeleted > 0) {
+                    welcomeText.setText("Registro excluído com sucesso.");
+                } else {
+                    welcomeText.setText("Nenhum registro encontrado para excluir com o ID fornecido.");
+                }
+            }
+        } catch (SQLException | NumberFormatException e) {
+            e.printStackTrace();
+            welcomeText.setText("Erro ao excluir no banco de dados.");
+        }
+    }
+
 }
