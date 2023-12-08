@@ -74,14 +74,15 @@ public class ProcessoController {
     @FXML
     protected void onInsertButtonClick() {
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/poo", "postgres", "30092003")) {
-            String sql = "INSERT INTO processo (numero, tipo, data_protocolo, numero_tribunal, tribunal, instancia) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO processo (id_processo, numero, tipo, data_protocolo, numero_tribunal, tribunal, instancia) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, numeroField.getText());
-                preparedStatement.setString(2, tipoField.getText());
-                preparedStatement.setDate(3, Date.valueOf(dataProtocoloPicker.getValue()));
-                preparedStatement.setString(4, numeroTribunalField.getText());
-                preparedStatement.setString(5, tribunalField.getText());
-                preparedStatement.setInt(6, Integer.parseInt(instanciaField.getText()));
+                preparedStatement.setInt(1, Integer.parseInt(idProcessoField.getText()));
+                preparedStatement.setString(2, numeroField.getText());
+                preparedStatement.setString(3, tipoField.getText());
+                preparedStatement.setDate(4, Date.valueOf(dataProtocoloPicker.getValue()));
+                preparedStatement.setString(5, numeroTribunalField.getText());
+                preparedStatement.setString(6, tribunalField.getText());
+                preparedStatement.setInt(7, Integer.parseInt(instanciaField.getText()));
 
                 preparedStatement.executeUpdate();
                 welcomeText.setText("Inserção realizada com sucesso!");
@@ -91,6 +92,8 @@ public class ProcessoController {
             welcomeText.setText("Erro ao inserir no banco de dados.");
         }
     }
+
+
 
     @FXML
     protected void onSearchButtonClick() {
