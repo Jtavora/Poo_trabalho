@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.projetopoo.ProcessoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox spacing="10.0">
+        <TextField fx:id="idProcessoField" promptText="ID do Processo"/>
+        <TextField fx:id="numeroField" promptText="Número do Processo"/>
+        <TextField fx:id="tipoField" promptText="Tipo do Processo"/>
+        <DatePicker fx:id="dataProtocoloPicker" promptText="Data do Protocolo"/>
+        <TextField fx:id="numeroTribunalField" promptText="Número do Tribunal"/>
+        <TextField fx:id="tribunalField" promptText="Tribunal"/>
+        <TextField fx:id="instanciaField" promptText="Instância"/>
+    </VBox>
+
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Inserir Processo" onAction="#onInsertButtonClick"/>
+    </HBox>
+
+    <VBox spacing="10.0">
+        <Label text="Buscar por ID"/>
+        <TextField fx:id="searchIdField"/>
+    </VBox>
+
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button text="Buscar Processo" onAction="#onHelloButtonClick"/>
+    </HBox>
+
+    <TextArea fx:id="welcomeText" text="Bem-vindo ao Projeto POO!" wrapText="true">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </TextArea>
+</VBox>
